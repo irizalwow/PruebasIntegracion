@@ -1,0 +1,17 @@
+<aura:component>
+
+        <aura:attribute name="alertas" type="Alerta__c[]"/>
+        <aura:attribute name="columns" type="List"/> 
+        <lightning:workspaceAPI aura:id="workspace"/>
+        <!-- handlers-->
+        <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+        <aura:registerEvent name="closeModal" type="c:EventoModalClose"/>
+
+        
+
+
+        <div style="height: 300px">
+                <lightning:datatable keyField="id" data="{! v.alertas }" columns="{! v.columns }" resizeColumnDisabled="true"
+                 hideCheckboxColumn="true" onrowaction="{!c.rowAction}" rowNumberOffset="0" showRowNumberColumn="true"/>
+            </div>
+</aura:component>

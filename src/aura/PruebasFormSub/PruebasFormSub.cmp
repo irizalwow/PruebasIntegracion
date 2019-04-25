@@ -1,0 +1,18 @@
+<aura:component>
+        <aura:attribute name="auraArray" type="Aura.Component[]" />
+        <aura:attribute name="auraArray2" type="Aura.Component[]"/>
+        <aura:attribute name="tam" type="Integer" required="true"/>
+        <aura:attribute name="apiName" type="String" required="true"/>
+        <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+        <lightning:layoutItem size="{!v.tam}" padding="horizontal-medium" >
+                <lightning:recordEditForm objectApiName="{!v.apiName}" onsubmit="{!c.handleOnSubmit}" onerror="{!c.handleOnError}" aura:id="myForm">
+                                                ESTAMOS DENTRO BRODA
+                                       <aura:iteration items="{!v.auraArray2}" var="item"> 
+                                                {!item}
+                                        </aura:iteration> 
+                        
+                                <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update" />
+                </lightning:recordEditForm> 
+        </lightning:layoutItem> 
+</aura:component>

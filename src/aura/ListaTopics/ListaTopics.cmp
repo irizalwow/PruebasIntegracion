@@ -1,0 +1,24 @@
+<aura:component implements="flexipage:availableForAllPageTypes" controller="PruebasConTopics">
+<aura:attribute name="version" type="String" default="v1.15"/>
+<aura:attribute name="listaTopics" type="PushTopic[]"/>
+<aura:attribute name="auxiliar" type="boolean" default="false"/>
+<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+<div class="slds-form-element">
+    <label class="slds-form-element__label" for="select-01">Selecciona un Topic</label>
+        <div class="slds-form-element__control">
+            <div class="slds-select_container">
+                <select class="slds-select" id="select-01">
+                    <option value="">Please select</option>
+                    <aura:iteration items="{!v.listaTopics}" var="topic">
+                        <option value="{topic.Id}">{!topic.Name}</option>
+                    </aura:iteration>
+                </select>
+            </div>
+    </div>
+</div>
+<lightning:button label="Buscar" onclick="{!c.onSearch}"/>
+<aura:iteration items="{!v.listaTopics}" var="topic">
+    Topic Name : {!topic.Name}
+</aura:iteration>
+</aura:component>

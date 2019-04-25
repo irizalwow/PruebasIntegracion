@@ -1,0 +1,19 @@
+<aura:component implements="lightning:utilityItem,flexipage:availableForAllPageTypes" controller="PruebasConTopics">
+<aura:attribute name="supportsPopOut" type="Boolean" default="false" />
+<aura:attribute name="version" type="String" default="v1.2"/>
+<aura:attribute name="listaTopics" type="PushTopic[]"/>
+<aura:attribute name="auxiliar" type="boolean" default="false"/>
+
+
+
+<lightning:badge label="{!v.version}"/>
+
+<lightning:button label="Buscar" onclick="Search"/>
+<aura:iteration items="{!v.listaTopics}" var="topic">
+    Topic Name : {!topic.Name}
+</aura:iteration>
+
+<aura:if isTrue="{!v.auxiliar}">
+    HOLLIWIIII
+</aura:if>
+</aura:component>

@@ -1,0 +1,35 @@
+<aura:component>
+    <aura:attribute name="alerta" type="Alerta__c"/>
+    <aura:attribute name="alertaVista" type="Id[]"/>
+    <aura:attribute name="padre" type="Id"/>
+
+    <lightning:workspaceAPI aura:id="workspace"/>
+
+    <aura:registerEvent name="alertavista" type="c:AlertaVista"/>
+
+   <!-- <lightning:button  onclick="{!c.openTab}" class="slds-size_full" >
+        <lightning:card title="{!v.alerta.Name}" iconName="standard:announcement" >
+    </lightning:card>
+    </lightning:button> -->
+<div onclick="{!c.openSubTab}" class="zoom">
+   <lightning:card title="{!v.alerta.Descripcion__c}" variant="Narrow" iconName="custom:custom53" class="tileBackground">
+       
+       <lightning:layout multipleRows="yes">
+            
+        <lightning:layoutItem class="slsd-align_center" size="6">
+               
+            <div class="slds-text-align_left slds-text-title_bold slds-text-body_small slds-p-left_x-small">Cliente:</div>
+            <div class="slds-text-align_left slds-p-left_x-small"><p>{!v.alerta.Cliente__c}</p></div>
+            <div class="slds-text-align_left slds-text-title_bold slds-text-body_small slds-p-left_x-small">Fecha Fin:</div>
+            <div class="slds-text-align_left slds-p-left_x-small"><p><lightning:formattedDateTime value="{!v.alerta.Fecha_fin_de_reporte__c}" year="numeric" month="numeric" day="numeric" hour="2-digit"
+                minute="2-digit" time-zone-name="short" hour12="true"></lightning:formattedDateTime></p></div>
+            
+      
+        </lightning:layoutItem>
+    
+    </lightning:layout>
+    
+   </lightning:card>
+</div>
+
+</aura:component>

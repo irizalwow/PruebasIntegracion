@@ -1,0 +1,5 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute name="aux" type="String" default="holi"/>
+    <lightning:utilityBarAPI aura:id="utilitybar" />
+    <lightning:button label="Set Utility Highlighted" onclick="{! c.setUtilityHighlighted}" />
+</aura:component>

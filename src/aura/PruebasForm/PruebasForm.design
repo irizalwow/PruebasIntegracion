@@ -1,0 +1,6 @@
+<design:component >
+        <design:attribute name="typeForm" datasource="VIEW,EDIT" />
+        <design:attribute name="apiName" label="Introduce el ApiName del objeto" datasource="apex://ListaDinamica1" />
+        <design:attribute name="buffer" label="Introduce Campos" default="All"/>
+        <design:attribute name="columnas" label="Introduce el numero de columnas" default="1"/>
+</design:component>

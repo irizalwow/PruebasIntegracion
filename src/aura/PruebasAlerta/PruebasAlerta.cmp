@@ -1,0 +1,30 @@
+<aura:component controller="AlertController" implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global"  >
+    
+    <aura:attribute name="alertas" type="Alerta__c[]"/>
+    <aura:attribute name="alertaVista" type="String[]"/>
+    <aura:attribute name="esCaso" type="Boolean"/>
+    <aura:attribute name="tabPadreActual" type="Id"/>
+    <aura:attribute name="recordIdPadreActual" type="Id"/>
+    <aura:attribute name="firstTime" type="boolean" default="true"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="lightning:tabFocused" action="{! c.onTabFocused }"/>
+    <aura:handler name="alertavista" event="c:AlertaVista" action="{!c.updateVistas}"/>
+
+    <lightning:utilityBarAPI aura:id="utilitybar" />
+    <lightning:workspaceAPI aura:id="workspace"/>
+    
+    <div class="backgroundBlack">
+    <aura:if isTrue="{!not(empty(v.alertas))}">
+        <lightning:layout multipleRows="true" >  
+            <!--<lightning:card title="">-->
+                <aura:iteration items="{!v.alertas}" var="alert">
+                    <lightning:layoutItem  size="12" class="slds-p-around_xx-small" >
+                            <c:AlertTile alerta="{!alert}" padre="{!v.tabPadreActual}"/>
+                    </lightning:layoutItem>
+                </aura:iteration>
+            <!--</lightning:card>  -->
+        </lightning:layout>
+    </aura:if>
+</div>
+</aura:component>
