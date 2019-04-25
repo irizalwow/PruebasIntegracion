@@ -1,0 +1,130 @@
+<aura:component controller="PruebasNumero1" implements="flexipage:availableForAllPageTypes,force:hasRecordId">
+
+        <aura:attribute name="idActual" type="Id" />
+        <aura:attribute name="typeForm" type="String" />
+        <aura:attribute name="buffer" type="String" default="all"/>
+        <aura:attribute name="apiName" type="String" default="Account"/>
+        <aura:attribute name="object" type="sObject" />
+        <aura:attribute name="arrayBuffer" type="String[]"/>
+        <aura:attribute name="auraArray" type="Aura.Component[]"/>
+        <aura:attribute name="auraArray0" type="Aura.Component[]"/>
+        <aura:attribute name="auraArray1" type="Aura.Component[]"/>
+        <aura:attribute name="auraArray2" type="Aura.Component[]"/>
+        <aura:attribute name="auraArray3" type="Aura.Component[]"/>
+        <aura:attribute name="auraArray4" type="Aura.Component[]"/>
+        <aura:attribute name="auraArray5" type="Aura.Component[]"/>
+        <aura:attribute name="tam" type="Integer"/>
+        <aura:attribute name="visible" type="boolean" default="false"/>
+        <aura:attribute name="columnas" type="Integer" default="1"/>
+
+        <aura:handler name="change" value="{!v.apiName}" action="{!c.apiNameChange}"/>
+        <aura:handler name="change" value="{!v.buffer}" action="{!c.bufferChange}"/>
+
+
+        <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+        <lightning:card title="{!'Create new' + v.apiName}" iconName="custom:custom58" >
+                
+                        <aura:if isTrue="{!v.visible}" >
+                        <lightning:layout horizontalAlign="center" multipleRows="true">
+                                <aura:if isTrue="{!v.columnas == 1 }">
+                                        <lightning:layoutItem size="10" padding="horizontal-medium" >
+                                                <lightning:recordEditForm objectApiName="{!v.apiName}" onsubmit="{!c.handleOnSubmit}" onerror="{!c.handleOnError}" aura:id="myForm">
+                                        
+                                                                        <aura:iteration items="{!v.auraArray}" var="item"> 
+                                                                                        {!item}
+                                                                        </aura:iteration>
+                                                        
+                                                                <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update" />
+                                                </lightning:recordEditForm> 
+                                        </lightning:layoutItem>  
+                                </aura:if>
+                        </lightning:layout>
+
+
+
+        <!--#######################AQUI COMENZAMOS A INVOCAR LOS FORMS###########################-->
+                        <aura:if isTrue="{!v.columnas == 2 }">   
+                        <lightning:recordEditForm objectApiName="{!v.apiName}" onsubmit="{!c.handleOnSubmit}" onerror="{!c.handleOnError}" aura:id="myForm">  
+                                <lightning:layout  multipleRows="true">     
+                                                        <lightning:layoutItem size="6" padding="horizontal-medium" >
+                                                                <aura:iteration items="{!v.auraArray0}" var="item"> 
+                                                                                        {!item}
+                                                                </aura:iteration>            
+                                                        </lightning:layoutItem>
+                                                        <lightning:layoutItem size="6" padding="horizontal-medium" >
+                                                                <aura:iteration items="{!v.auraArray1}" var="item"> 
+                                                                                        {!item}
+                                                                </aura:iteration>
+                                                        </lightning:layoutItem>
+                                                
+                                                 
+                                </lightning:layout> 
+                                <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update" />
+                        </lightning:recordEditForm>
+                        </aura:if>  
+
+                        <aura:if isTrue="{!v.columnas == 3 }">   
+                        <lightning:recordEditForm objectApiName="{!v.apiName}" onsubmit="{!c.handleOnSubmit}" onerror="{!c.handleOnError}" aura:id="myForm">  
+                                <lightning:layout  multipleRows="true">     
+                                                        <lightning:layoutItem size="4" padding="horizontal-medium" >
+                                                                <aura:iteration items="{!v.auraArray0}" var="item"> 
+                                                                                        {!item}
+                                                                </aura:iteration>            
+                                                        </lightning:layoutItem>
+                                                        <lightning:layoutItem size="4" padding="horizontal-medium" >
+                                                                <aura:iteration items="{!v.auraArray1}" var="item"> 
+                                                                                        {!item}
+                                                                </aura:iteration>
+                                                        </lightning:layoutItem>
+                                                        <lightning:layoutItem size="4" padding="horizontal-medium" >
+                                                                <aura:iteration items="{!v.auraArray2}" var="item"> 
+                                                                                        {!item}
+                                                                </aura:iteration>
+                                                        </lightning:layoutItem>                                              
+                                                 
+                                </lightning:layout> 
+                                <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update" />
+                        </lightning:recordEditForm>
+                        </aura:if>  
+
+                        <aura:if isTrue="{!v.columnas == 4 }">   
+                        <lightning:recordEditForm objectApiName="{!v.apiName}" onsubmit="{!c.handleOnSubmit}" onerror="{!c.handleOnError}" aura:id="myForm">  
+                                <lightning:layout  multipleRows="true">     
+                                                        <lightning:layoutItem size="3" padding="horizontal-medium" >
+                                                                <aura:iteration items="{!v.auraArray0}" var="item"> 
+                                                                                        {!item}
+                                                                </aura:iteration>            
+                                                        </lightning:layoutItem>
+                                                        <lightning:layoutItem size="3" padding="horizontal-medium" >
+                                                                <aura:iteration items="{!v.auraArray1}" var="item"> 
+                                                                                        {!item}
+                                                                </aura:iteration>
+                                                        </lightning:layoutItem>
+                                                        <lightning:layoutItem size="3" padding="horizontal-medium" >
+                                                                <aura:iteration items="{!v.auraArray2}" var="item"> 
+                                                                                        {!item}
+                                                                </aura:iteration>
+                                                        </lightning:layoutItem>
+                                                        <lightning:layoutItem size="3" padding="horizontal-medium" >
+                                                                <aura:iteration items="{!v.auraArray3}" var="item"> 
+                                                                                        {!item}
+                                                                </aura:iteration>
+                                                        </lightning:layoutItem>                                                         
+                                                        
+                                                 
+                                </lightning:layout> 
+                                <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update" />
+                        </lightning:recordEditForm>
+                        </aura:if>  
+                </aura:if>  
+        </lightning:card>
+
+        
+      <!--  <lightning:recordForm
+        recordId="{!v.idActual}"
+        objectApiName="Account"
+        layoutType="Full"
+        mode="view" />-->
+
+</aura:component>

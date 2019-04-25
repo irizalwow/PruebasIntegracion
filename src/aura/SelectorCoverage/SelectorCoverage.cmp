@@ -1,0 +1,27 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="opcionSeleccionada" type="boolean" default="false"/>
+    <aura:attribute name="component" type="Aura.Component"/>
+    <aura:attribute name="tipo" type="String"/>
+    <lightning:card title="SELECTOR">
+            <div class="slds-form-element">
+                    <label class="slds-form-element__label" for="select-01">Selecct a Type Channel</label>
+                    <div class="slds-form-element__control">
+                      <div class="slds-select_container">
+                        <select class="slds-select" id="selection" onchange="{!c.onChangeSelection}">
+                          <option value="">Please select</option>
+                          <option value="eventType">Event</option>
+                          <option value="dataChangeType">Data Change</option>
+                          <option value="pushTopicType">PushTopic</option>
+                          <option value="genericEventType">Generic Event</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <aura:if isTrue="{!v.opcionSeleccionada}">
+                        <aura:if isTrue="{!v.tipo == 'pushTopicType'}">
+                            <c:ListaTopics/>
+                        </aura:if>
+                  </aura:if>
+    </lightning:card>
+
+</aura:component>

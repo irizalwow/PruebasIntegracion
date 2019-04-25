@@ -1,0 +1,25 @@
+.THIS.zoom:hover{
+    transform: scale(1.02);
+    /*border-color: #B2DAE4;
+    border-style: groove;
+    border-width: 2px;
+    border-radius: 5px;*/
+}
+
+
+.THIS.zoom {
+    transition: transform .2s; /* Animation */
+    /*width: 40px;*/
+   /* height: 40px;*/
+    margin: 0 auto;
+   
+  }
+
+.THIS.zoom:active {
+    transform: scale(0.95);
+  }
+
+.THIS .tileBackground {
+  /*background-color: black;*/
+  color: #ADC605;
+}

@@ -1,0 +1,62 @@
+<aura:component controller="AlertController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    
+        <aura:attribute name="titleone" type="String" default="Promociones" />
+        <aura:attribute name="titletwo" type="String" default="Alertas" />
+        <aura:attribute name="buttonone" type="String" default="Ver promociones"/>
+        <aura:attribute name="buttontwo" type="String" default="Ver alertas"/>
+        <aura:attribute name="alertas" type="Alerta__c[]"/>
+
+        <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+        <aura:handler name="closeModal" event="c:EventoModalClose" action="{!c.closeModal}"/>
+
+        <!--COMPONENTE VISIBLE EN LA PAGINA DE CASOS-->
+        <aura:if isTrue="{!not(empty(v.alertas))}">
+        <div aura:id="mainBodyCmp" >
+            <lightning:layout horizontalAlign="center" >
+                <lightning:layoutItem size="6" >
+                    <lightning:card title="{!v.titleone}" iconName="utility:events" class="slds-p-around__medium">
+                        <center>
+                            <lightning:button label="{!v.buttonone}" variant="brand" />
+                        </center>
+                    </lightning:card>
+                </lightning:layoutItem>
+                <lightning:layoutItem size="6" >
+                    <lightning:card title="{!v.titletwo}" iconName="utility:alert" class="slds-p-around__medium">
+                        <center>
+                            <lightning:button label="{!v.buttontwo}" onclick="{!c.showModal}" variant="brand" />
+                        </center>
+                    </lightning:card>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+
+        <!--MODAL CON LAS ALERTAS-->
+    <div aria-hidden="false">
+    <div class="slds-backdrop slds-backdrop_open" id="backdrop" style="display:none;">
+    <section id="ModalId" role="dialog" class="slds-modal slds-modal_medium slds-fade-in-open" style="display:none;">
+        
+        <div class="slds-modal__container">
+          <div class="slds-modal__header">
+           
+           <h2 id="header43" class="slds-text-heading--medium">Alertas</h2>
+           <!--<button class="slds-button slds-button-|-neutral slds-modal__close" onclick="{!c.hideModal}">X</button>-->
+           <lightning:buttonIcon iconName="utility:settings" class="slds-modal__close" variant="bare" onclick="{! c.closeModal }" alternativeText="Settings" />
+          </div>
+         <div class="slds-modal__content slds-p-around--medium">
+           <div>
+              <c:ModalTable alertas="{!v.alertas}"/>
+           </div>
+         </div>
+           <div class="slds-x-small-buttons--horizontal">
+             <p> footer</p>
+           </div>
+       </div>   
+         
+        
+    </section>
+    </div>
+    </div>
+    
+</aura:if>
+            <!--<button class="slds-button" onclick="{!c.showModal}">Open Modal</button>-->
+</aura:component>
